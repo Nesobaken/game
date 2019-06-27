@@ -1,0 +1,63 @@
+ body{
+	background: #FFE14D;
+}
+header h3{
+	color: red;
+	font-size: 40px;
+	margin-left: 46%;
+	line-height: 10px;
+}
+.container{
+	width: 60%;
+	margin-left: 20%;
+	font-size: 50px;
+	line-height: 10px;
+}
+.underRound{
+	display: flex;
+	justify-content: space-around;
+}
+.result{
+	display: flex;
+	justify-content: space-around;
+	width: 60%;
+	height: 100px;
+	margin-left: 20%;
+	color: red;
+	font-size: 40px;
+}
+.result h4{
+	line-height: 40px;
+	height: 90px;
+	margin-top: 5px;
+}
+.choose{
+	display: flex;
+	justify-content: space-around;
+	margin-top: 160px;
+}
+.choose img{
+	height: 150px;
+}
+.choose img:hover{
+	border: 6px ridge #1CA472;
+}
+.scissorsBg{
+	width: 100px;
+	height: 100px;
+	background: url(icons8-hand-scissors-100.png) no-repeat;
+}
+.rockBg{
+	width: 100px;
+	height: 100px;
+	background: url(icons8-clenched-fist-100.png) no-repeat;
+}
+.paperBg{
+	width: 100px;
+	height: 100px;
+	background: url(icons8-hand-100.png) no-repeat;
+}
+.choose button{
+	background-color: #FFE14D;
+	border: none; 
+}

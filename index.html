@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<h3 id="round">round 0</h3>
+	</header>
+	<div class="container">
+		<div class="underRound">
+			<h4>YOU</h4>
+			<h4 id="score">0 : 0</h4>
+			<h4>BOT</h4>
+		</div>
+		<div class="result">
+			<div id="res1"></div>
+			<h4 id="winLose"></h4>
+			<div id="res2"></div>
+		</div>
+		<div class="choose">
+			<button onclick="rockY(); algoritm()">
+				<img id="rock" src="icons8-clenched-fist-100.png" alt="Rock">
+			</button>
+			<button onclick="scissorsY(); algoritm()">
+				<img id="scissors" src="icons8-hand-scissors-100.png" alt="Scissors">
+			</button>
+			<button onclick="paperY(); algoritm()">
+				<img id="paper" src="icons8-hand-100.png" alt="Paper">
+			</button>
+		</div>
+	</div>
+	<script>
+		var b = 0;
+		var c = 0;
+		var botscore = 0;
+		var yourscore = 0;
+		var roundNumber = 0;
+		var itog = 0;
+		function rockY() {
+			var rocks = document.getElementById("res1");
+			rocks.setAttribute("class", 'rockBg');
+			roundNumber += 1;
+			b = 1;
+		}
+		function scissorsY() {
+			var scissors = document.getElementById("res1");
+			scissors.setAttribute("class", 'scissorsBg');
+			roundNumber += 1;
+			b = 2;
+		};
+		function paperY() {
+			var papers = document.getElementById("res1");
+			papers.setAttribute("class", 'paperBg');
+			roundNumber += 1;
+			b = 3;
+		};
+		function rockB() {
+			var rocks = document.getElementById("res2");
+			rocks.setAttribute("class", 'rockBg');
+			c = 1;
+		};
+		function scissorsB() {
+			var scissorss = document.getElementById("res2");
+			scissorss.setAttribute("class", 'scissorsBg');
+			c = 2;
+		};
+		function paperB() {
+			var papers = document.getElementById("res2");
+			papers.setAttribute("class", 'paperBg');
+			c = 3;
+		};
+		function algoritm(){
+			itog += 1;
+			if (itog == 4 && yourscore > botscore){
+				var reload = confirm('Вы выйграли!!! '+yourscore+':'+botscore+'\nХотите сыграть заново?');
+				if (reload == true){
+					window.location.reload();
+				}
+			}
+			else if (itog == 4 && botscore > yourscore){
+				var reload = confirm('Вы проиграли :( '+yourscore+':'+botscore+'\nХотите сыграть заново?');
+				if (reload == true){
+					window.location.reload();
+				}
+			}
+			else if (itog == 4 && botscore == yourscore){
+				var reload = confirm('Ничья -_- '+yourscore+':'+botscore+'\nХотите сыграть заново?');
+				if (reload == true){
+					window.location.reload();
+				}
+			}
+			var span = document.createElement('span');
+			var round = document.getElementById('round');
+			round.innerHTML = 'round '+ roundNumber;
+			round.appendChild(span);
+			function random(min, max) {
+				var rand = min - 0.5 + Math.random() * (max - min + 1)
+				rand = Math.round(rand);
+				return rand;
+			}
+			var variant = random(0,2)
+			if (variant == 0)
+				rockB();
+			else if (variant == 1)
+				scissorsB();
+			else if (variant == 2)
+				paperB();
+			///////////////////////////////////////////Ничья
+			if (b == 1 && c == 1){
+				var draw = document.createElement('span');
+				var winLoseDraw = document.getElementById('winLose');
+				winLoseDraw.innerHTML = 'DRAW';
+				winLoseDraw.appendChild(draw);
+			}
+			else if (b == 2 && c == 2){
+				var draw = document.createElement('span');
+				var winLoseDraw = document.getElementById('winLose');
+				winLoseDraw.innerHTML = 'DRAW';
+				winLoseDraw.appendChild(draw);
+			}
+			else if (b == 3 && c == 3){
+				var draw = document.createElement('span');
+				var winLoseDraw = document.getElementById('winLose');
+				winLoseDraw.innerHTML = 'DRAW';
+				winLoseDraw.appendChild(draw);
+			}
+			////////////////////////////////////////////////Компьютеру очко
+			else if (b == 1 && c == 3) {
+				var youLose = document.createElement('span');
+				var lose = document.getElementById('winLose');
+				lose.innerHTML = 'YOU\nLOSE';
+				lose.appendChild(youLose);
+				botscore = botscore+1;
+				var schet = document.createElement('span');
+				var score = document.getElementById('score');
+				score.innerHTML = yourscore +' : '+ botscore;
+				score.appendChild(schet);
+			}
+			else if (b == 2 && c == 1) {
+				var youLose = document.createElement('span');
+				var lose = document.getElementById('winLose');
+				lose.innerHTML = 'YOU\nLOSE';
+				lose.appendChild(youLose);
+				botscore = botscore+1;
+				var schet = document.createElement('span');
+				var score = document.getElementById('score');
+				score.innerHTML = yourscore +' : '+ botscore;
+				score.appendChild(schet);
+			}
+			else if (b == 3 && c == 2) {
+				var youLose = document.createElement('span');
+				var lose = document.getElementById('winLose');
+				lose.innerHTML = 'YOU\nLOSE';
+				lose.appendChild(youLose);
+				botscore = botscore+1;
+				var schet = document.createElement('span');
+				var score = document.getElementById('score');
+				score.innerHTML = yourscore +' : '+ botscore;
+				score.appendChild(schet);
+			}
+			////////////////////////////////////////////////очко пользователю
+			else if (b == 1 && c == 2) {
+				var youWin = document.createElement('span');
+				var win = document.getElementById('winLose');
+				win.innerHTML = 'YOU\nWIN';
+				win.appendChild(youWin);
+				yourscore = yourscore+1;
+				var schet = document.createElement('span');
+				var score = document.getElementById('score');
+				score.innerHTML = yourscore +' : '+ botscore;
+				score.appendChild(schet);
+			}
+			else if (b == 2 && c == 3) {
+				var youWin = document.createElement('span');
+				var win = document.getElementById('winLose');
+				win.innerHTML = 'YOU\nWIN';
+				win.appendChild(youWin);
+				yourscore = yourscore+1;
+				var schet = document.createElement('span');
+				var score = document.getElementById('score');
+				score.innerHTML = yourscore +' : '+ botscore;
+				score.appendChild(schet);
+			}
+			else if (b == 3 && c == 1) {
+				var youWin = document.createElement('span');
+				var win = document.getElementById('winLose');
+				win.innerHTML = 'YOU\nWIN';
+				win.appendChild(youWin);
+				yourscore = yourscore+1;
+				var schet = document.createElement('span');
+				var score = document.getElementById('score');
+				score.innerHTML = yourscore +' : '+ botscore;
+				score.appendChild(schet);
+			}
+		}
+	</script>
+</body>
+</html>
